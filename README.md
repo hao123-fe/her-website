@@ -1,3 +1,3 @@
-her-pc-demo
-===========
-一个运行在Her框架下的fis pc-demo，我们在demo加入了quickling功能
+her-website
+===
+[使用文档](https://github.com/hao123-fe/her/wiki/1.Get-start)
