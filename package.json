@@ -1,0 +1,22 @@
+{
+  "name": "her-website",
+  "version": "0.0.1",
+  "description": "Her website",
+  "keywords": [
+    "fis",
+    "her",
+    "demo"
+  ],
+  "author": {
+    "name": "hao123-fe",
+    "email": "zhangwentao@baidu.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "her-runtime": "0.0.1"
+  },
+  "scripts": {
+    "install": "cp -r node_modules/her-runtime/dist/* home/lib/",
+    "start": "cd home && her release -cw"
+  }
+}
