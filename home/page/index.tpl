@@ -1,8 +1,5 @@
 {extends file="./layout.tpl"}
 {block name="block_head_static"}
-    <!--[if lt IE 9]>
-        <script src="/lib/js/html5.js"></script>
-    <![endif]-->
     {* 模板中加载静态资源 *}
     {require name="home:static/lib/css/bootstrap.css"}
     {require name="home:static/lib/css/bootstrap-responsive.css"}

@@ -6,8 +6,8 @@ $fisgithub = 'https://github.com/fex-team/fis';
 $github_wiki = $github . '/wiki';
 
 $fis_data = array(
-    'title' => 'Welcome to the FIS pc-demo run on HER.',
-    'description' => '适用于所有大中小企业的前端集成解决方案，为前端团体提供前端性能优化、静态资源管理、编译工具等技术基础，实现前端生产工业化。',
+    'title' => 'Her - Hao123前端高性能渲染解决方案',
+    'description' => '专为前端性能优化设计的工程化解决方案，封装了前端性能优化核心解决方案，让前端性能优化更简单！',
     'github' => $github,
     'docs' => array(
         array(

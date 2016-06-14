@@ -4,6 +4,8 @@
 	{head}
 	    <meta charset="utf-8"/>
     	<meta content="{$description}" name="description">
+      <link rel="shortcut icon" href="http://www.hao123.com/favicon.ico">
+      <link rel="icon" href="http://www.hao123.com/favicon.ico">
     	<title>{$title}</title>
     	{block name="block_head_static"}{/block}
 	{/head}

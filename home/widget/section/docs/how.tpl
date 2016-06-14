@@ -12,7 +12,7 @@
 
 <ul>
 <li>通过 <code>Pagelet</code> Smarty 插件对页面分块。分块收集 HTML 片段及其依赖的 CSS、JS 资源，对页面模块进行细粒度编码，分解资源依赖和数据获取等</li>
-<li>后端输出控制器。后端输出控制提供了<code>FirstController|QuicklingController|NoScriptController</code> 3种输出控制器，分别处理基础页请求、局部 Quickling 请求和 NoScript 请求，其中 <code>FirstController</code> 为 <code>Pagelet</code> 提供了 <code>server|lazy|default|none</code> 4种输出模式，方便实现核心(首屏)模块优先输出、非核心模块延迟输出，模块开关等</li>
+<li>后端输出控制器。后端输出控制提供了<code>FirstController</code>、<code>QuicklingController</code>、<code>NoScriptController</code> 3种输出控制器，分别处理基础页请求、局部 Quickling 请求和 NoScript 请求，其中 <code>FirstController</code> 为 <code>Pagelet</code> 提供了 <code>server|lazy|default|none</code> 4种输出模式，方便实现核心(首屏)模块优先输出、非核心模块延迟输出，模块开关等</li>
 <li>前端渲染控制器。实现了 <code>Pagelet</code> 按需加载、渲染，资源及其依赖加载、资源动态化打包(计划中)等</li>
 </ul>
 </li>
