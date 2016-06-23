@@ -12,5 +12,14 @@
 	{* 使用body插件替换body标签，主要为可控制加载JS资源 *}
 	{body}
 		{block name="content"}{/block}
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?c9155afe7e2bf25278b810e8165bf551";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
 	{/body}
 {/html}
