@@ -4,52 +4,74 @@
     {require name="home:static/lib/css/bootstrap.css"}
     {require name="home:static/lib/css/bootstrap-responsive.css"}
 {/block}
-{block name="content"}
 
-    <div id="wrapper">
-        {pagelet id="sidebar"}
-            {$nav_index = $smarty.get.nav|default:0}
-            {* 通过widget插件加载模块化页面片段，name属性对应文件路径,模块名:文件目录路径 *}
+{block name="global_vars"}
+{$_p_id_ = intval($smarty.get._p_id_)}
+{/block}
+
+{block name="content"}
+{require name="home:static/index/index.less"}
+    
+<div id="wrapper">
+    {* inline 带有 pagelet 的 tpl *}
+    <link rel="import" href="/container/section/inline.tpl?__inline">
+
+    {pagelet id="container" her-renderMode="server"}
+        <a id="forkme_banner" target="_blank" href="{$github}">View on GitHub</a>
+
+        {pagelet her-renderMode="server" id="core"}
+            {widget name="home:widget/slogan/slogan.tpl"}
             {widget
-                name="home:widget/sidebar/sidebar.tpl" 
-                data=$docs
+                name="home:widget/section/section.tpl"
+                method="section"
+                doc=$docs[0].doc index=$nav_index wiki=$docs[0].wiki
             }
-            {require name="home:static/lib/js/jquery-1.10.1.js"}
             {script}
-                {* $('html').toggleClass('expanded'); *}
-                $('#sidebar').hover(function() {
-                    require.defer(['/widget/sidebar/sidebar.async.js'], function(sidebar){
-                        sidebar.run();
-                    });
-                });
+                console.log(this.id, 'load');
             {/script}
         {/pagelet}
+    
+        <script runat="server">
+        require.defer(['/lib/js_helper/append.js'], function(append) {
+          append.init('p_feed_', {
+            key: '_p_id_',
+            wrapId: 'feed_wrap',
+          });
+        });
+        </script>
 
-        {pagelet id="container" her-renderMode="server"}
-            <a id="forkme_banner" target="_blank" href="{$github}">View on GitHub</a>
+        <div id="feed_wrap">
+        {pagelet id="p_feed_{$_p_id_}"}
 
-            {pagelet her-renderMode="server" id="core"}
-                {widget name="home:widget/slogan/slogan.tpl"}
-                {widget
-                    name="home:widget/section/section.tpl"
-                    method="section"
-                    doc=$docs[0].doc index=$nav_index wiki=$docs[0].wiki
-                }
-            {/pagelet}
-
-            {pagelet her-renderMode="lazy" id="nonCore"}
             {foreach array_slice($docs, 1) as $doc}
-                {widget
-                    name="home:widget/section/section.tpl"
-                    method="section"
-                    doc=$doc.doc index=$nav_index wiki=$doc.wiki
-                }
+            {widget
+                name="home:widget/section/section.tpl"
+                method="section"
+                doc=$doc.doc index=$nav_index wiki=$doc.wiki
+            }
             {/foreach}
-            {/pagelet}
-        {/pagelet}
-    </div>
-    {require name="home:static/index/index.less"}
 
+            {if $_p_id_ < 3}
+            <div data-hook="feed-bottom"></div>
+            <script runat="server">
+                var pagelet = this;
+                require.defer(['/widget/js/jquery-1.10.1.js', '/lib/js_helper/lazy.js', '/lib/js_helper/append.js'], function($, lazy, append) {
+                    var $pagelet = $('#' + pagelet.id);
+                    var $feedBottom = $('[data-hook=feed-bottom]', $pagelet);
+                    lazy.add($feedBottom[0], function() {
+                        append('p_feed_', '/');
+                    });
+                });
+            </script>
+            {/if}
+
+            {script}
+                console.log(this.id, 'load');
+            {/script}
+        {/pagelet}
+        </div>
+    {/pagelet}
+</div>
     {* 启用emulator监控页面点击实现局部刷新 *}
     {* require.defer会在DomReady之后执行 *}
     {* {script}

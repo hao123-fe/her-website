@@ -1,5 +1,7 @@
+{block name="global_vars"}{/block}
+
 {* 使用html插件替换普通html标签，同时注册JS组件化库 *}
-{html her="home:lib/javascript/main.js"}
+{html her="home:lib/javascript/main.js" her-config=['inlineCSS' => true]}
   {* 使用head插件替换head标签，主要为控制加载同步静态资源使用 *}
 	{head}
 	    <meta charset="utf-8"/>

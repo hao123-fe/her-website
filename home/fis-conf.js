@@ -1,7 +1,7 @@
 fis.config.merge({
 	namespace : 'home',
     pack : {
-        'static/pkg/aio.css' : [
+        'static/pkg/aio.css?__inline' : [
             'static/lib/css/bootstrap.css',
             'static/lib/css/bootstrap-responsive.css',
             'widget/**.css'
